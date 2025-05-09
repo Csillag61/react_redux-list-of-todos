@@ -10,7 +10,9 @@ export const TodoModal: React.FC = () => {
   const isLoading = useAppSelector(state => state.todos.loading);
   const selectedTodoId = useAppSelector(state => state.modal.selectedTodoId);
   const users = useAppSelector(state => state.users.users);
-  const user = selectedTodoId !== null ? users[selectedTodoId] : null;
+  const todos = useAppSelector(state => state.todos.todos);
+  const selectedTodo = todos.find(todo => todo.id === selectedTodoId);
+  const user = selectedTodo ? users[selectedTodo.userId] : null;
 
   return isModalOpen ? (
     <div className="modal is-active" data-cy="modal">
