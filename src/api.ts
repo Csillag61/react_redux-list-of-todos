@@ -2,7 +2,7 @@ import { Todo } from './types/Todo';
 import { User } from './types/User';
 
 // eslint-disable-next-line operator-linebreak
-const BASE_URL =
+export const BASE_URL =
   'https://mate-academy.github.io/react_dynamic-list-of-todos/api';
 
 function wait(delay: number): Promise<void> {
@@ -19,6 +19,14 @@ function get<T>(url: string): Promise<T> {
     .then(() => fetch(fullURL))
     .then(res => res.json());
 }
+
+export const fetchUser = async (userId: number): Promise<User> => {
+  const response = await fetch(
+    `https://mate-academy.github.io/react_dynamic-list-of-todos/api/users/${userId}`,
+  );
+
+  return response.json();
+};
 
 export const getTodos = () => get<Todo[]>('/todos');
 
