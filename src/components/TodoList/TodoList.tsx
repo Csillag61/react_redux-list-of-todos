@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { setUser } from '../../features/users';
-import { fetchUser } from '../../api';
+import { getUser } from '../../api';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { openModal } from '../TodoModal/modalSlice';
@@ -30,7 +30,7 @@ export const TodoList: React.FC = () => {
 
   const handleTodoClick = (todo: Todo) => {
     dispatch(openModal(todo.id)); // ✅ Store selected todo ID
-    fetchUser(todo.userId).then(user => {
+    getUser(todo.userId).then(user => {
       dispatch(setUser({ id: todo.userId, user })); // ✅ Store user dynamically
     });
   };

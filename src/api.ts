@@ -20,14 +20,6 @@ function get<T>(url: string): Promise<T> {
     .then(res => res.json());
 }
 
-export const fetchUser = async (userId: number): Promise<User> => {
-  const response = await fetch(
-    `https://mate-academy.github.io/react_dynamic-list-of-todos/api/users/${userId}`,
-  );
-
-  return response.json();
-};
-
 export const getTodos = () => get<Todo[]>('/todos');
 
 export const getUser = (userId: number) => get<User>(`/users/${userId}`);
